@@ -98,9 +98,6 @@ tk.Label(frame, text="Enter number of recommendations to receive:", font=("Arial
 recommend_count_entry = tk.Entry(frame, width=40, font=("Arial", 12), bd=2)
 recommend_count_entry.grid(row=1, column=1, padx=5, pady=5)
 
-style = tk.Style()
-style.configure("TButton", padding=6, relief="flat", background="#4CAF50", foreground="white")
-style.map("TButton", background=[("active", "#45A049")])
 recommend_button = tk.Button(frame, text="Get Recommendations", command=get_recommendations)
 recommend_button.grid(row=2, column=0, columnspan=2, pady=10)
 
