@@ -61,7 +61,7 @@ def recommend_songs(track_name, n_recommendations):
     distances = [mahalanobis(track_latent, df_encoded[i], inv_cov_matrix) for i in range(len(df_encoded))]
     
     # get indices of closest songs based on mahalanobis distance
-    closest_indices = np.argsort(distances)[1:n_recommendations + 1]  # Skip the first one (itself)
+    closest_indices = np.argsort(distances)[1:int(n_recommendations) + 1]  # Skip the first one (itself)
     
     # return recommended songs
     recommended_songs = df.iloc[closest_indices]
