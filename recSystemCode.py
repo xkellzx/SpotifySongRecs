@@ -61,10 +61,26 @@ def recommend_songs(track_name, n_recommendations):
     distances = [mahalanobis(track_latent, df_encoded[i], inv_cov_matrix) for i in range(len(df_encoded))]
     
     # get indices of closest songs based on mahalanobis distance
-    closest_indices = np.argsort(distances)[1:int(n_recommendations) + 1]  # Skip the first one (itself)
+    closest_indices = np.argsort(distances)[1:]  # Skip the first one (itself)
     
-    # return recommended songs
-    recommended_songs = df.iloc[closest_indices]
+    # keep track of recommended songs and avoid duplicates
+    recommended_songs = pd.DataFrame(columns=['track_name', 'artists'])
+    seen_tracks = set()  # use a set to track unique pairs
+    
+    # loop through top recommended songs
+    for index in closest_indices:
+        track = df.iloc[index]
+        track_info = (track['track_name'], track['artists'])
+        
+        # only add distinct song title and artist name combinations
+        if track_info not in seen_tracks:
+            seen_tracks.add(track_info)
+            recommended_songs = recommended_songs.append(track, ignore_index=True)
+        
+        # stop once reach provided number of recommendations
+        if len(recommended_songs) >= int(n_recommendations):
+            break
+    
     return recommended_songs[['track_name', 'artists']]
 
 # create function to update recommendation list in gui
