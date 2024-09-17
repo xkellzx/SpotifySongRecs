@@ -87,22 +87,19 @@ root = tk.Tk()
 root.title("Spotify Recommendation System")
 
 # add ui components
-frame = tk.Frame(root, bg="lightgrey")
-frame.pack(pady=10, padx=10, fill=tk.X)
+tk.Label(root, text="Enter a song name:").pack(pady=10)
+track_entry = tk.Entry(root, width=40)
+track_entry.pack(pady=10)
 
-tk.Label(frame, text="Enter a song name:", font=("Arial", 14), fg="blue", bg="lightgrey").grid(row=0, column=0, padx=5, pady=5)
-track_entry = tk.Entry(frame, width=40, font=("Arial", 12), bd=2)
-track_entry.grid(row=0, column=1, padx=5, pady=5)
+tk.Label(root, text="Enter how many recommendations you wish to receive:").pack(pady=5)
+recommend_count_entry = tk.Entry(root, width=40)
+recommend_count_entry.pack(pady=5)
 
-tk.Label(frame, text="Enter number of recommendations to receive:", font=("Arial", 14), fg="blue", bg="lightgrey").grid(row=1, column=0, padx=5, pady=5)
-recommend_count_entry = tk.Entry(frame, width=40, font=("Arial", 12), bd=2)
-recommend_count_entry.grid(row=1, column=1, padx=5, pady=5)
-
-recommend_button = tk.Button(frame, text="Get Recommendations", command=get_recommendations)
-recommend_button.grid(row=2, column=0, columnspan=2, pady=10)
+recommend_button = tk.Button(root, text="Get Recommendations", command=get_recommendations)
+recommend_button.pack(pady=10)
 
 # display recommendations
-recommendation_listbox = tk.Listbox(frame, width=60, height=10)
+recommendation_listbox = tk.Listbox(root, width=60, height=10)
 recommendation_listbox.pack(pady=10)
 
 # run the tkinter event loop
