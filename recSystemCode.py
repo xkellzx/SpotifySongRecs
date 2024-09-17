@@ -75,7 +75,7 @@ def recommend_songs(track_name, n_recommendations):
         # only add distinct song title and artist name combinations
         if track_info not in seen_tracks:
             seen_tracks.add(track_info)
-            recommended_songs = recommended_songs.concat(track, ignore_index=True)
+            recommended_songs = pd.concat([recommended_songs, track_info], ignore_index=True)
         
         # stop once reach provided number of recommendations
         if len(recommended_songs) >= int(n_recommendations):
