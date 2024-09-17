@@ -65,7 +65,7 @@ def recommend_songs(track_name, n_recommendations):
     
     # return recommended songs
     recommended_songs = df.iloc[closest_indices]
-    return recommended_songs[['track_name', 'artist_name']]
+    return recommended_songs[['track_name', 'artists']]
 
 # create function to update recommendation list in gui
 def get_recommendations():
@@ -80,7 +80,7 @@ def get_recommendations():
         return
     
     for index, row in recommendations.iterrows():
-        recommendation_listbox.insert(tk.END, f"{row['track_name']} by {row['artist_name']}")
+        recommendation_listbox.insert(tk.END, f"{row['track_name']} by {row['artists']}")
 
 # initialize tkinter gui window
 root = tk.Tk()
