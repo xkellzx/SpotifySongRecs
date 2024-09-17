@@ -4,8 +4,9 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Load your Spotify dataset (or use any dataset you have)
-df = pd.read_csv('SpotifyTracks.csv')
+# load spotify dataset
+data_dir = "data/SpotifyTracks.csv"
+df = pd.read_csv(data_dir)
 
 # Select features and preprocess data (same steps as before)
 features = ['danceability', 'energy', 'loudness', 'speechiness', 
@@ -46,7 +47,7 @@ def get_recommendations():
 
 # Initialize the Tkinter GUI window
 root = tk.Tk()
-root.title("Music Recommendation System")
+root.title("Spotify Recommendation System")
 
 # Add UI components
 tk.Label(root, text="Enter a song name:").pack(pady=10)
