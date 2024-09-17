@@ -105,7 +105,7 @@ recommend_button = tk.Button(frame, text="Get Recommendations", command=get_reco
 recommend_button.grid(row=2, column=0, columnspan=2, pady=10)
 
 # display recommendations
-recommendation_listbox = tk.Listbox(root, width=60, height=10)
+recommendation_listbox = tk.Listbox(frame, width=60, height=10)
 recommendation_listbox.pack(pady=10)
 
 # run the tkinter event loop
