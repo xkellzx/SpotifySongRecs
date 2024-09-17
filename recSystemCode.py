@@ -45,7 +45,7 @@ cov_matrix = np.cov(df_encoded, rowvar=False)
 inv_cov_matrix = np.linalg.inv(cov_matrix)
 
 # create recommendation function using mahalanobis distance 
-def recommend_songs(track_name, n_recommendations=20):
+def recommend_songs(track_name, n_recommendations):
     # return error message if not valid song input
     if track_name not in df['track_name'].values:
         messagebox.showerror("Error", "Song not found in the dataset")
@@ -70,7 +70,8 @@ def recommend_songs(track_name, n_recommendations=20):
 # create function to update recommendation list in gui
 def get_recommendations():
     track_name = track_entry.get()
-    recommendations = recommend_songs(track_name)
+    recommendation_num = recommend_count_entry.get()
+    recommendations = recommend_songs(track_name, recommendation_num)
     
     # clear previous recommendations
     recommendation_listbox.delete(0, tk.END)
@@ -89,6 +90,10 @@ root.title("Spotify Recommendation System")
 tk.Label(root, text="Enter a song name:").pack(pady=10)
 track_entry = tk.Entry(root, width=40)
 track_entry.pack(pady=10)
+
+tk.Label(root, text="Enter how many recommendations you wish to receive:").pack(pady=5)
+recommend_count_entry = tk.Entry(root, width=40)
+recommend_count_entry.pack(pady=5)
 
 recommend_button = tk.Button(root, text="Get Recommendations", command=get_recommendations)
 recommend_button.pack(pady=10)
