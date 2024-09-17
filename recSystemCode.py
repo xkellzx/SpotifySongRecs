@@ -9,8 +9,8 @@ import numpy as np
 from scipy.spatial.distance import mahalanobis
 
 # load spotify dataset
-data_dir = "data\SpotifyTracks.csv"
-df = pd.read_csv(data_dir)
+data_dir = "C:/Users/whatk/SpotifyRecs/data"
+df = pd.read_csv(f'{data_dir}/SpotifyTracks.csv')
 
 # select features and preprocess data
 features = ['danceability', 'energy', 'loudness', 'speechiness', 
