@@ -70,12 +70,12 @@ def recommend_songs(track_name, n_recommendations):
     # loop through top recommended songs
     for index in closest_indices:
         track = df.iloc[index]
-        track_info = (track['track_name'], track['artists'])
+        track_info = {"track_name": track['track_name'], "artists": track['artists']}
         
         # only add distinct song title and artist name combinations
         if track_info not in seen_tracks:
             seen_tracks.add(track_info)
-            recommended_songs = pd.concat([recommended_songs, track_info], ignore_index=True)
+            recommended_songs = pd.concat([recommended_songs, pd.DataFrame(track_info)], ignore_index=True)
         
         # stop once reach provided number of recommendations
         if len(recommended_songs) >= int(n_recommendations):
