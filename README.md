@@ -13,7 +13,9 @@ How to use:
 - Keep getting more recommendations based on other songs you like!
 
 Uses the following metrics: danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo
-Includes the use of autoencoders and Mahalanobis distance
+
+Includes the use of neural networks, autoencoders, and Mahalanobis distance
+
 Paired with a Tkinter GUI
 
 Dataset used: https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset
