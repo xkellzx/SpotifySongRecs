@@ -4,7 +4,8 @@ Spotify Recommendation System
 
 How to use:
 - Download the provided data set
-- Open the .py file
+- Download and open the .py file
+- Update data_dir 
 - Run python recSystemCode.py
 - Input a song of your choice (must be a song included in the dataset)
 - Input the number of song recommendations you want
